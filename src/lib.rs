@@ -149,3 +149,7 @@ macro_rules! probe_lazy(
     ($provider:ident, $name:ident $(, $arg:expr)* $(,)?)
     => ($crate::platform_probe_lazy!($provider, $name, $($arg,)*));
 );
+
+#[cfg(any(target_os = "linux", target_os = "android"))]
+#[link_section = ".probes"]
+pub static mut SEMAPHORE: u16 = 0;
