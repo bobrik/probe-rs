@@ -149,3 +149,6 @@ macro_rules! probe_lazy(
     ($provider:ident, $name:ident $(, $arg:expr)* $(,)?)
     => ($crate::platform_probe_lazy!($provider, $name, $($arg,)*));
 );
+
+#[link_section = ".probes"]
+pub static mut SEMAPHORE: u16 = 0;
